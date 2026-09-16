@@ -13,3 +13,9 @@ let saudacao_c = function(nome="Desconhecido"){
 let saudacao_d = function(nome="Desconhecido"){
     return `Olá ${nome}, seja bem-vindo!`;
 }
+
+const btn_a = document.getElementById("btn_a");
+btn_a.addEventListener("click", function(e){
+    e.preventDefault();
+    saudacao_a
+});
