@@ -1,16 +1,15 @@
-function saudacao_a(){
+let saudacao_a = () =>{
     alert(`Ola Fulano, seja bem-vindo!`);
 }
 
-function saudacao_b(){
+let saudacao_b = (nome) => {
     alert(`Olá ${nome}, seja bem-vindo!`);
 }
 
-function saudacao_c(nome="Desconhecido"){
+let saudacao_c = (nome="Desconhecido") =>{
     alert(`Olá ${nome}, seja bem vindo!`);
 }
 
-function saudacao_d(nome="Desconhecido"){
+let saudacao_d = (nome="Desconhecido") =>{
     return `Olá ${nome}, seja bem-vindo!`;
 }
-
