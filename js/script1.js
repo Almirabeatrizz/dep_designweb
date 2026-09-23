@@ -26,17 +26,15 @@ console.log(`Nome: ${nome} | Idade ${idade}`);
 
 const nome = document.getElementById("nome");
 const idade = document.getElementById("idade");
-
 const lista = document.getElementById("lista");
-
 const formulario = document.getElementById("formulario");
+
 formulario.addEventListener("submit", function(e){
     e.preventDefault();
     //amigos.push(nome.value);
     let item = [nome.value, idade.value]
     //agenda.push(item);
-     agenda.unshift(item);
-
+    agenda.unshift(item);
     alert(`Amigo adicionado com sucesso!`);
     listarAgenda();
     nome.value = "";
@@ -50,5 +48,5 @@ function listarAgenda(){
         let idade = item[1];
         itens = itens + `<li>Nome: ${nome} | Idade: ${idade}</li>`;
     }
-    listarAgenda.innerHTML = itens; 
+    lista.innerHTML = itens; 
 }
