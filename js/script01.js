@@ -1,43 +1,31 @@
 //Processamento-Memória
-const bolos = [
-    "Bolo de Chocolate",
-    "Bolo de Cenoura com Cobertura de Chocolate",
-    "Bolo de Laranja",
-    "Bolo de Queijo",
-    "Bolo Recheado de Chocolate",
-    "Bolo de Baunilha"
-]
-//Entradas
-const busca = document.getElementById("busca");
-const termo = busca.termo;
-//Saidas
-const lista = document.getElementById("lista");
-//Eventos
-function listarBolos(t){
-    let resultados = [];
-    if (t == null){
-        resultados = bolos;
+let hoje = new Date();
+//Entrada
+const cadastro = document.getElementById("cadastro");
+const nome = cadastro.nome;
+const nasc = cadastro.nasc;
+//Saida
+const msg = document.getElementById("msg");
+//Evento
+function saudacao(){
+    let m ="";
+    if (nome.value == undefined || nome.value.trim() == ""){
+        m = `Ola, hoje é ${hoje.getDate()} /${hoje.getMonth()+1} / ${hoje.getFullYear()}!`
     }else{
-        t = t.trim().toLowerCase();
-        for (let i = 0; i<bolos.length; i++){
-            let nome = bolos [i]
-            if (nome.toLowerCase().trim().includes(t)){
-                resultados.push(nome)
-            }
+        m = `Ola ${nome.value}, hoje é ${hoje.getDate()} /${hoje.getMonth()+1} / ${hoje.getFullYear()}!`
+        let dt_nasc = new Date(nasc.value);
+        let dif = 0;
+        if (hoje > dt_nasc){
+            dif = hoje - dt_nasc;
+            m = m + `<br/>Falta ${dif/(100*60*60*24)} dias`
+        }else{
+            dif = dt_nasc - hoje;
+            m = m + `<br/>Passou ${dif/(1000*60*60*24)} dias`
         }
     }
-    let itens = "";
-    for (let i = 0; i < resultados.length; i ++){
-        let item = resultados[i];
-        let li = `<li>${item}</li>`
-        itens = itens + li;
-    }
-    lista.innerHTML = itens;
+    msg.innerHTML = m;
 }
-
-
-busca.addEventListener("submit", function(e){
+cadastro.addEventListener("submit", function(e){
     e.preventDefault();
-    listarBolos(termo.value);
-}
-)
+    saudacao()
+})
